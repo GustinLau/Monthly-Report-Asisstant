@@ -1,5 +1,4 @@
 <script setup>
-import Layout from '@/layout/index.vue'
 </script>
 
 <template>
@@ -14,8 +13,7 @@ import Layout from '@/layout/index.vue'
   <!--    </div>-->
   <!--  </header>-->
 
-  <!--  <RouterView />-->
-  <layout />
+    <RouterView />
 </template>
 
 <style scoped>

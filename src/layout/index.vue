@@ -1,7 +1,10 @@
 <template>
-  <div class="container">
+  <div class="layout">
     <HeaderBar />
     <NavBar />
+    <div class="container">
+      <RouterView/>
+    </div>
   </div>
 </template>
 
@@ -11,24 +14,32 @@ import NavBar from "./components/NavBar.vue";
 import HeaderBar from "./components/HeaderBar.vue";
 </script>
 
-<style scoped>
-.container {
+<style lang="scss" scoped>
+.layout {
   position: relative;
   width: 100%;
   height: 100%;
-  background: darkred;
+  .header-bar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  .nav-bar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+  }
 }
-.container .header-bar{
+.container {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  left: 64px;
+  top: 38px;
+  height: calc(100vh - 38px);
+  width: calc(100vw - 64px);
+  max-height: calc(100vh - 38px);
+  overflow: auto;
 }
 
-.container .nav-bar{
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-}
 </style>
