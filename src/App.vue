@@ -1,24 +1,17 @@
-<script setup>
-</script>
-
 <template>
-  <!--  <header>-->
-  <!--    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />-->
-
-  <!--    <div class="wrapper">-->
-  <!--      <nav>-->
-  <!--        <RouterLink to="/">Home</RouterLink>-->
-  <!--        <RouterLink to="/about">About</RouterLink>-->
-  <!--      </nav>-->
-  <!--    </div>-->
-  <!--  </header>-->
-
+  <el-config-provider :locale="locale">
     <RouterView />
+  </el-config-provider>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-</style>
+<script setup>
+import { RouterView } from 'vue-router'
+import { computed } from 'vue'
+
+import { useAppStore } from '@/stores/app'
+import { languages } from '@/locales'
+
+const appStore = useAppStore()
+const language = computed(() => appStore.language)
+const locale = computed(() => languages[language.value].element)
+</script>

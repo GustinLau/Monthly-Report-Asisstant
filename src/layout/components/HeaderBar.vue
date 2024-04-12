@@ -27,7 +27,8 @@ function close() {
 <style lang="scss" scoped>
 .header-bar {
   display: flex;
-  height: 38px;
+  height: 28px;
+  z-index: 99999;
   align-items: center;
   justify-content: flex-end;
   -webkit-app-region: drag;

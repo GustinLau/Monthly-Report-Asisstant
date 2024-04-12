@@ -35,10 +35,10 @@ import HeaderBar from "./components/HeaderBar.vue";
 .container {
   position: absolute;
   left: 64px;
-  top: 38px;
-  height: calc(100vh - 38px);
-  width: calc(100vw - 64px);
-  max-height: calc(100vh - 38px);
+  top: 0;
+  height: calc(100vh - 16px);
+  width: calc(100vw - 64px - 16px);
+  max-height: calc(100vh - 16px);
   overflow: auto;
 }
 

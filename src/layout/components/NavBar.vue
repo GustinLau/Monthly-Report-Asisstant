@@ -1,18 +1,18 @@
 <template>
   <div class="nav-bar">
-    <img class="logo" :src="Logo" alt="logo"/>
-    <el-menu default-active="/home" router :collapse="true">
+    <img class="logo" :src="Logo" alt="logo" />
+    <el-menu :default-active="activeMenu" router :collapse="true">
       <el-menu-item index="/home">
         <Icon icon="carbon:application" />
       </el-menu-item>
-      <el-sub-menu size="small" index="/setting" class="bottom">
+      <el-sub-menu size="small" index="/setting" class="bottom" popper-class="sub-menu" :teleported="false"
+                   :popper-offset="0">
         <template #title>
           <Icon icon="carbon:settings" />
         </template>
-          <el-menu-item index="1-1">item one</el-menu-item>
-          <el-menu-item index="1-2">item two</el-menu-item>
+        <el-menu-item index="/setting/system">{{ $t('route.system_setting') }}</el-menu-item>
+        <el-menu-item index="/setting/about">{{ $t('route.about') }}</el-menu-item>
       </el-sub-menu>
-
     </el-menu>
   </div>
 </template>
@@ -20,8 +20,12 @@
 <script setup>
 import { Icon } from '@iconify/vue'
 import Logo from '@/assets/logo.svg'
+import { useRouter } from 'vue-router'
+import { computed } from 'vue'
+import { $t } from '@/locales'
 
-
+const router = useRouter()
+const activeMenu = computed(() => router.currentRoute.value.path)
 </script>
 
 <style lang="scss" scoped>
@@ -32,29 +36,45 @@ import Logo from '@/assets/logo.svg'
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 2px 0 20px -5px #ccc;
+  box-shadow: 2px 0 20px -5px var(--color-shadow);
+  user-select: none;
+
   .logo {
-    margin: 8px auto;
-    width: 42px;
-    height: 42px;
+    margin: 16px auto;
+    width: 38px;
+    height: 38px;
   }
+
   .el-menu {
     border-right: none;
     flex: 1;
     display: flex;
     flex-direction: column;
+
     .el-menu-item {
       font-size: 24px;
     }
+
+    :deep(.sub-menu) {
+      .el-menu-item {
+        height: 36px;
+        line-height: 36px;
+        font-size: 14px;
+      }
+    }
+
     .el-sub-menu {
       &.bottom {
         margin-top: auto;
-        margin-bottom: 16px;
+        margin-bottom: 8px;
       }
+
       :deep(.el-sub-menu__title) {
         font-size: 24px;
       }
     }
   }
 }
+
+
 </style>

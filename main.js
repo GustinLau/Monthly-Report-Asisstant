@@ -6,8 +6,10 @@ let win = null;
 const createWindow = async () => {
     win = new BrowserWindow({
         frame: false,
-        width: 1024,
-        height: 768,
+        width: 800,
+        height: 600,
+        transparent: true,
+        backgroundColor: '#00000000',
         maximizable: false,
         resizable: false,
         webPreferences: {
@@ -23,6 +25,7 @@ const createWindow = async () => {
         win.loadFile(join(__dirname, 'dist/index.html'))
     }
     setupListener()
+    setupStore()
 };
 
 function setupListener() {
@@ -49,4 +52,7 @@ app.on("window-all-closed", () => {
     }
 });
 
-
+function setupStore() {
+    const Store = require('electron-store');
+    Store.initRenderer();
+}
