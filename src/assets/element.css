@@ -1,0 +1,8 @@
+.el-overlay {
+    height: calc(100% - 14px);
+    left: 7px;
+    top: 7px;
+    bottom: 7px;
+    right: 7px;
+    border-radius: 8px;
+}

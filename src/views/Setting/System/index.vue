@@ -15,7 +15,7 @@
         </el-select>
       </el-form-item>
       <el-form-item :label="$t('setting.theme_mode')">
-        <el-radio-group v-model="theme">
+        <el-radio-group :model-value="theme" @change="handleThemeChange">
           <el-radio-button :label="startCase($t('setting.theme.light'))" value="light" />
           <el-radio-button :label="startCase($t('setting.theme.dark'))" value="dark" />
           <el-radio-button :label="startCase($t('setting.theme.system'))" value="system" />
@@ -34,7 +34,7 @@
 
 <script setup>
 import { Icon } from '@iconify/vue'
-import { computed, reactive, ref } from 'vue'
+import { computed, reactive } from 'vue'
 import { last, startCase } from 'lodash'
 import ProjectConfig from '@/views/Setting/System/components/ProjectConfig.vue'
 import { useAppStore } from '@/stores/app'
@@ -47,7 +47,12 @@ function handleLanguageChange(val) {
   appStore.setLanguage(val)
 }
 
-const theme = ref('system')
+const theme = computed(() => appStore.theme)
+
+function handleThemeChange(val) {
+  appStore.setTheme(val)
+}
+
 
 const titleMap = {
   Main: () => $t('route.system_setting'),

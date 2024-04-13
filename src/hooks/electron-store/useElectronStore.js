@@ -1,27 +1,28 @@
 export function useElectronStore() {
-  const Store = require('electron-store');
-  const store = new Store()
+    const Store = require('electron-store');
+    const store = new Store()
 
-  function getProjectList() {
-    return store.get('projects', [])
-  }
+    function getProjectList() {
+        return store.get('projects') ?? []
+    }
 
-  function setProjectList(projects) {
-    this.store.set('projects', projects)
-  }
+    function setProjectList(projects) {
+        store.set('projects', projects)
+    }
 
-  function getAppConfig() {
-    return store.get('appConfig', {})
-  }
+    function getAppConfig() {
+        return store.get('appConfig') ?? {}
+    }
 
-  function setAppConfig(appConfig) {
-    store.set('appConfig', appConfig)
-  }
+    function setAppConfig(appConfig) {
+        const config = getAppConfig()
+        store.set('appConfig', { ...config, ...appConfig })
+    }
 
-  return {
-    getAppConfig,
-    setAppConfig,
-    getProjectList,
-    setProjectList
-  }
+    return {
+        getAppConfig,
+        setAppConfig,
+        getProjectList,
+        setProjectList
+    }
 }

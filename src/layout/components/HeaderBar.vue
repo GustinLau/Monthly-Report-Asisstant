@@ -28,7 +28,7 @@ function close() {
 .header-bar {
   display: flex;
   height: 28px;
-  z-index: 99999;
+  z-index: 999;
   align-items: center;
   justify-content: flex-end;
   -webkit-app-region: drag;

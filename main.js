@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require('electron')
+const { app, BrowserWindow, ipcMain, nativeTheme } = require('electron')
 const { join } = require('path')
 
 
@@ -26,6 +26,7 @@ const createWindow = async () => {
     }
     setupListener()
     setupStore()
+    setupTheme()
 };
 
 function setupListener() {
@@ -34,8 +35,12 @@ function setupListener() {
             app.quit();
         }
     })
-    ipcMain.on('window-min',function(){
+    ipcMain.on('window-min', function() {
         win.minimize();
+    })
+
+    ipcMain.on('change-theme', function(e, theme) {
+        nativeTheme.themeSource = theme;
     })
 }
 
@@ -55,4 +60,11 @@ app.on("window-all-closed", () => {
 function setupStore() {
     const Store = require('electron-store');
     Store.initRenderer();
+}
+
+function setupTheme() {
+    const Store = require('electron-store');
+    const store = new Store();
+    const appConfig = store.get('appConfig');
+    nativeTheme.themeSource = appConfig.theme ?? 'system'
 }

@@ -21,6 +21,9 @@
   --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
   --vt-c-text-dark-1: var(--vt-c-white);
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+
+  --vt-c-border-win-light: #e2e2e2;
+  --vt-c-border-win-dark: #181818
 }
 
 /* semantic color variables for this project */
@@ -38,6 +41,8 @@
   --color-shadow: var(--vt-c-white-shadow);
 
   --section-gap: 160px;
+
+  --color-border-win: var(--vt-c-border-win-light);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -53,6 +58,8 @@
     --color-text: var(--vt-c-text-dark-2);
 
     --color-shadow: var(--vt-c-black-shadow);
+
+    --color-border-win: var(--vt-c-border-win-dark);
   }
 }
 
