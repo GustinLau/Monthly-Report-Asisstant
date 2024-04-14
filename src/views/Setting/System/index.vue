@@ -2,7 +2,7 @@
   <div class="title">
     <template v-if="canGoBack">
       <el-button style="line-height: 32px" text @click="closeSubPage">
-        <Icon style="font-size: 24px;" icon="carbon:arrow-left" />
+        <CarbonArrowLeft style="font-size: 24px;" />
       </el-button>
     </template>
     <span>{{ title }}</span>
@@ -23,7 +23,7 @@
       </el-form-item>
       <el-form-item :label="$t('setting.project_config')">
         <el-button text @click="openProjectConfigPage">
-          <Icon style="font-size: 18px" icon="carbon:arrow-right" />
+          <CarbonArrowRight style="font-size: 18px" />
         </el-button>
       </el-form-item>
     </el-form>
@@ -33,7 +33,8 @@
 </template>
 
 <script setup>
-import { Icon } from '@iconify/vue'
+import CarbonArrowLeft from '~icons/carbon/arrow-left';
+import CarbonArrowRight from '~icons/carbon/arrow-right';
 import { computed, reactive } from 'vue'
 import { last, startCase } from 'lodash'
 import ProjectConfig from '@/views/Setting/System/components/ProjectConfig.vue'

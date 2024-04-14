@@ -3,12 +3,12 @@
     <img class="logo" :src="Logo" alt="logo" />
     <el-menu :default-active="activeMenu" router :collapse="true">
       <el-menu-item index="/home">
-        <Icon icon="carbon:application" />
+        <CarbonApplication />
       </el-menu-item>
       <el-sub-menu size="small" index="/setting" class="bottom" popper-class="sub-menu" :teleported="false"
                    :popper-offset="0">
         <template #title>
-          <Icon icon="carbon:settings" />
+          <CarbonSettings />
         </template>
         <el-menu-item index="/setting/system">{{ $t('route.system_setting') }}</el-menu-item>
         <el-menu-item index="/setting/about">{{ $t('route.about') }}</el-menu-item>
@@ -18,7 +18,8 @@
 </template>
 
 <script setup>
-import { Icon } from '@iconify/vue'
+import CarbonApplication from '~icons/carbon/application';
+import CarbonSettings from '~icons/carbon/settings';
 import Logo from '@/assets/logo.svg'
 import { useRouter } from 'vue-router'
 import { computed } from 'vue'

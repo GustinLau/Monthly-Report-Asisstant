@@ -40,7 +40,7 @@ function aboutAuthor() {
 }
 
 function feedback() {
-  shell.openExternal('https://github.com/GustinLau/Weekly-Report-Asisstant/issues')
+  shell.openExternal('https://github.com/GustinLau/Monthly-Report-Asisstant/issues')
 }
 </script>
 

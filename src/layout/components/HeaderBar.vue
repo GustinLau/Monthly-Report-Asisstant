@@ -1,16 +1,17 @@
 <template>
   <div class="header-bar">
     <el-link class="min-button" :underline="false" @click="minimize">
-      <Icon icon="mingcute:minimize-fill" />
+      <Minimize />
     </el-link>
     <el-link class="close-button" :underline="false" @click="close">
-      <Icon icon="mingcute:close-fill" />
+      <Close />
     </el-link>
   </div>
 </template>
 
 <script setup>
-import { Icon } from '@iconify/vue';
+import Minimize from '~icons/mingcute/minimize-fill';
+import Close from '~icons/mingcute/close-fill';
 import { useElectron } from "@/hooks/electron/useElectron";
 
 const electron = useElectron()

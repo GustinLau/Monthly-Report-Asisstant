@@ -159,6 +159,9 @@ function deleteProject(project) {
       .then(() => {
         const list = cloneDeep(totalProjectList.value)
         projectStore.updateProjectList(list.filter(item => item.id !== project.id))
+        if (projectStore.currentProject === project.id) {
+          projectStore.updateCurrentProject('')
+        }
         ElNotification({
           message: startCase($t('common.delete_success')),
           type: 'success',

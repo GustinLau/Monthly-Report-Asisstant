@@ -3,6 +3,7 @@ const local = {
     title: '月报小助手'
   },
   common: {
+    project: '项目',
     id: '编号',
     name: '名称',
     delete: '删除',
@@ -15,14 +16,29 @@ const local = {
     operation_confirm: '操作确认',
     duplicate_data: '重复数据',
     delete_success: '删除成功',
-
-    close: '关闭',
-    confirmDelete: '确认删除吗？',
-
   },
   route: {
     system_setting: '系统设置',
     about: '关于'
+  },
+  home: {
+    upload_tips: '点击或将文件拖拽到此区域进行上传',
+    upload: '上传',
+    statisticians: '统计',
+    export: '导出',
+    current_config: '当前配置',
+    project_not_configured: '未配置项目',
+    project_select: '选择项目',
+    file_type_is_not_supported: '不支持该文件类型',
+    only_support_csv_file: '仅支持 csv 文件',
+    export_fail: '导出失败',
+    export_success: '导出成功',
+    table: {
+      job_number: '工号',
+      name: '姓名',
+      planned_work_hours: '计划工时',
+      actual_working_hours: '实际工时'
+    }
   },
   setting: {
     language_setting: '语言设置',
@@ -48,6 +64,9 @@ const local = {
     author: '关于作者',
     feedback: '意见反馈',
     manual: '操作手册'
+  },
+  error: {
+    incorrect_content: '文件内容不正确！'
   }
 };
 

@@ -5,10 +5,10 @@ export function useElectron() {
         return {
             ipcRenderer: window.require('electron').ipcRenderer,
             webFrame: window.require('electron').webFrame,
-            remote: window.require('electron').remote,
             shell: window.require('electron').shell,
             childProcess: window.require('child_process'),
             fs: window.require('fs'),
+            util: window.require('util'),
             path: window.require('path'),
         }
     }
