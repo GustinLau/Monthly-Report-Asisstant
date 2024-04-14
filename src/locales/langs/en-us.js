@@ -33,6 +33,7 @@ const local = {
         only_support_csv_file: 'Only support csv file',
         export_fail: 'export fail',
         export_success: 'export success',
+        export_files: 'export files',
         table: {
             job_number: 'job number',
             name: 'name',

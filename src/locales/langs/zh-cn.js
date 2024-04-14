@@ -33,6 +33,7 @@ const local = {
     only_support_csv_file: '仅支持 csv 文件',
     export_fail: '导出失败',
     export_success: '导出成功',
+    export_files:  '导出文件',
     table: {
       job_number: '工号',
       name: '姓名',

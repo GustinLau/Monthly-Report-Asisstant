@@ -157,7 +157,7 @@ export function useExcel() {
                   return dayjs(item.startTime).isSameOrAfter(dayjs(days[0])) && dayjs(item.endTime).isSameOrBefore(dayjs(last(days)).endOf('day'))
                 })
                 .map(item => {
-                  return [project.id, project.name, '合作厂商', user.id, user.name, item.taskType, item.id, item.title, item.status, new Date(item.startTime), new Date(item.endTime), item.predictWork, item.finishWork, '']
+                  return [project.id, project.name, '合作厂商', user.id, user.name, item.taskType, item.id, item.title, item.status, dayjs(item.startTime).add(dayjs().utcOffset(), 'minute').toDate(), dayjs(item.endTime).add(dayjs().utcOffset(), 'minute').toDate(), item.predictWork, item.finishWork, '']
                 })
               weekItems = weekItems.concat(weekUserItems)
             })

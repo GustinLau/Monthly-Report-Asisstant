@@ -1,12 +1,20 @@
 <template>
   <div v-loading='loading' class='home'>
     <el-steps :active='activeIndex' process-status='finish' finish-status='success' align-center>
-      <el-step :title="startCase($t('home.upload'))" :class="{'allow-click': activeIndex > 0}" @click='toStep(0)'>
+      <el-step
+        :title="startCase($t('home.upload'))"
+        :class="{'allow-click': activeIndex > 0}"
+        @click='toStep(0)'
+      >
         <template #icon>
           <CarbonCloudUpload style='font-size: 24px' />
         </template>
       </el-step>
-      <el-step :title="startCase($t('home.statisticians'))">
+      <el-step
+        :title="startCase($t('home.statisticians'))"
+        :class="{'allow-click': activeIndex > 1}"
+        @click='toStep(1)'
+      >
         <template #icon>
           <Dashboard style='font-size: 24px' />
         </template>
@@ -18,11 +26,13 @@
       </el-step>
     </el-steps>
 
-    <project-config-status />
+    <project-config-status :step='activeIndex'/>
 
     <upload-page v-show='activeIndex === 0' @analyzing='handleAnalyzing' @success='handleAnalyzeSuccess' />
 
     <data-review v-show='activeIndex === 1' :exporting='exporting' :data='analyses' @export-data='exportData' />
+
+    <export-success v-show='activeIndex >= 2' :exporting='exporting' @export-data='exportData' />
 
   </div>
 </template>
@@ -41,6 +51,7 @@ import { useExcel } from '@/hooks/excel/useExcel'
 import { useProjectStore } from '@/stores/porject'
 import { ElNotification } from 'element-plus'
 import { useElectron } from '@/hooks/electron/useElectron'
+import ExportSuccess from '@/views/Home/components/ExportSuccess.vue'
 
 const activeIndex = ref(0)
 const analyses = ref([])
@@ -109,13 +120,14 @@ function exportData() {
       })
     })
     .then((notify) => {
-      if(notify) {
+      if (notify) {
         ElNotification({
           showClose: true,
           message: startCase($t('home.export_success')),
           type: 'success',
           offset: 28
         })
+        activeIndex.value = 3
       }
     })
     .catch(() => {

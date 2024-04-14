@@ -1,7 +1,7 @@
 <template>
   <el-alert
     :type="project ? 'success' : 'error'"
-    :class="{'allow-click': step===1}"
+    :class="{'allow-click': step === 0}"
     :closable='false'
     @click='showProjectConfig'
   >
@@ -61,7 +61,7 @@ const dialogVisible = ref(false)
 const form = reactive({ id: '' })
 
 function showProjectConfig() {
-  if (props.step === 1) {
+  if (props.step === 0) {
     form.id = projectStore.currentProject
     dialogVisible.value = true
   }
@@ -71,7 +71,6 @@ function projectConfigConfirm() {
   dialogVisible.value = false
   projectStore.updateCurrentProject(form.id)
 }
-
 </script>
 
 <style scoped lang='scss'>
