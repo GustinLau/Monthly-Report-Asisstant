@@ -10,9 +10,20 @@ import MarkdownPlugin from 'vite-plugin-markdown'
 // https://vitejs.dev/config/
 export default defineConfig({
   base: './',
+  build: {
+    modulePreload: false,
+    assetsDir: 'assets',  //指定生成静态资源的存放路径
+    rollupOptions: {
+      output: {
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
+        assetFileNames: 'assets/[ext]/[name]-[hash].[ext]'
+      }
+    }
+  },
   plugins: [
     vue(),
-    // VueDevTools(),
+    VueDevTools(),
     Icons(),
     MarkdownPlugin({
       mode: ['vue'],

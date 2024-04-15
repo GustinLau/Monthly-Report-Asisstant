@@ -66,7 +66,7 @@ function openManual() {
 
 .main-info {
   font-size: 24px;
-  margin: 6px 0;
+  margin: 16px 0 6px 0;
   text-align: center;
 }
 

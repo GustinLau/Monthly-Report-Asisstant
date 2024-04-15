@@ -3,7 +3,7 @@ const { join } = require('path')
 
 
 let win = null
-const createWindow = async () => {
+const createWindow = () => {
   win = new BrowserWindow({
     frame: false,
     width: 800,
@@ -18,15 +18,12 @@ const createWindow = async () => {
     }
   })
   if (process.env.VITE_DEV_SERVER_URL) {
-    win.loadURL(process.env.VITE_DEV_SERVER_URL)
     // 开启调试台
     win.webContents.openDevTools()
+    return win.loadURL(process.env.VITE_DEV_SERVER_URL)
   } else {
-    win.loadFile(join(__dirname, 'dist/index.html'))
+    return win.loadFile(join(__dirname, 'dist/index.html'))
   }
-  setupListener()
-  setupStore()
-  setupTheme()
 }
 
 function setupListener() {
@@ -49,6 +46,9 @@ function setupListener() {
 }
 
 app.whenReady().then(async () => {
+  setupListener()
+  setupStore()
+  setupTheme()
   await createWindow() // 创建窗口
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()

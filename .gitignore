@@ -14,7 +14,9 @@ dist-ssr
 coverage
 *.local
 
-release/*
+release
+
+dist-electron
 
 /cypress/videos/
 /cypress/screenshots/
@@ -30,6 +32,3 @@ release/*
 *.sw?
 
 *.tsbuildinfo
-
-
-dist-electron/*
