@@ -69,6 +69,6 @@ function setupStore() {
 function setupTheme() {
   const Store = require('electron-store')
   const store = new Store()
-  const appConfig = store.get('appConfig')
+  const appConfig = store.get('appConfig') ?? {}
   nativeTheme.themeSource = appConfig.theme ?? 'system'
 }

@@ -1,6 +1,7 @@
 {
   "name": "monthly-report-assistant",
   "cnName": "月报小助手",
+  "description": "汇总、统计、生成结算文档",
   "version": "1.0.0",
   "private": true,
   "author": "Gustin Lau",
@@ -9,6 +10,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "electron:windows": "npm run build && electron-builder build --windows",
     "test:unit": "vitest",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/"
@@ -33,6 +35,7 @@
     "@vue/eslint-config-prettier": "^8.0.0",
     "@vue/test-utils": "^2.4.4",
     "electron": "^28.2.6",
+    "electron-builder": "^24.13.3",
     "electron-devtools-installer": "^3.2.0",
     "eslint": "^8.49.0",
     "eslint-plugin-vue": "^9.17.0",

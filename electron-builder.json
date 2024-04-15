@@ -1,0 +1,47 @@
+{
+  "productName": "Monthly Report Assistant",
+  "directories": {
+    "output": "release/"
+  },
+  "releaseInfo": {
+    "releaseNotes": "初始版本"
+  },
+  "publish": {
+    "provider": "generic",
+    "url": "https://electron-store.oss-cn-shenzhen.aliyuncs.com/monthly-report-assistant/"
+  },
+  "files": [],
+  "nsis": {
+    "oneClick": false,
+    "perMachine": true,
+    "allowToChangeInstallationDirectory": true,
+    "deleteAppDataOnUninstall": true,
+    "artifactName": "Monthly_Report_Assistant_${version}.${ext}",
+    "shortcutName": "月报小助手",
+    "include": "installer.nsh",
+    "guid": "73b74319-7654-522e-acdd-d765490077f2"
+  },
+  "win": {
+    "icon": "dist/assets/icons",
+    "target": [
+      {
+        "target": "nsis",
+        "arch": [
+          "ia32"
+        ]
+      }
+    ]
+  },
+  "mac": {
+    "icon": "dist/assets/icons",
+    "target": [
+      "dmg"
+    ]
+  },
+  "linux": {
+    "icon": "dist/assets/icons",
+    "target": [
+      "AppImage"
+    ]
+  }
+}
