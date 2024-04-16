@@ -67,7 +67,11 @@ export function useExcel() {
           Object.keys(columnIndex).forEach(k => {
             const value = row[columnIndex[k]]
             if (k === 'startTime' || k === 'endTime') {
-              item[k] = dayjs(value, 'YYYY/M/D Ah:mm:ss', 'zh-cn').toDate()
+              if (value.includes('上午') || value.includes('下午')) {
+                item[k] = dayjs(value, 'YYYY/M/D Ah:mm:ss', 'zh-cn').toDate()
+              } else {
+                item[k] = dayjs(value, 'zh-cn').toDate()
+              }
             } else if (k === 'owner') {
               const data = row[columnIndex[k]]
               item.owner = data.replace(/<(\w|\\)+>/, '').trim()
