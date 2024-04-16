@@ -1,11 +1,18 @@
 <template>
   <el-scrollbar class='manual'>
-    <VueComponent />
+    <ManualCN v-if="language==='zh-cn'"/>
+    <ManualEN v-if="language==='en-us'"/>
   </el-scrollbar>
 </template>
 
 <script setup>
-import { VueComponent } from '@/docs/manual.md'
+import { VueComponent as ManualCN } from '@/docs/manual-cn.md'
+import { VueComponent as ManualEN } from '@/docs/manual-en.md'
+import { useAppStore } from '@/stores/app'
+import { computed } from 'vue'
+
+const appStore = useAppStore()
+const language = computed(() => appStore.language)
 </script>
 
 
@@ -20,6 +27,7 @@ import { VueComponent } from '@/docs/manual.md'
     display: flex;
     align-items: center;
   }
+
   :deep(.el-button) {
     margin: 0 4px;
     pointer-events: none;

@@ -1,8 +1,8 @@
-const { app, BrowserWindow, ipcMain, nativeTheme, dialog } = require('electron')
+const { app, BrowserWindow, ipcMain, nativeTheme, dialog, globalShortcut } = require('electron')
 const { join } = require('path')
 
-
 let win = null
+let isDevToolsOpened = false
 const createWindow = () => {
   win = new BrowserWindow({
     frame: false,
@@ -17,6 +17,14 @@ const createWindow = () => {
       nodeIntegration: true // 渲染进程使用Node API
     }
   })
+  win.webContents.on('devtools-opened', () => {
+    isDevToolsOpened = true
+  })
+
+  win.webContents.on('devtools-closed', () => {
+    isDevToolsOpened = false
+  })
+
   if (process.env.VITE_DEV_SERVER_URL) {
     // 开启调试台
     win.webContents.openDevTools()
@@ -43,6 +51,12 @@ function setupListener() {
   ipcMain.on('open-save-dialog', function(e, defaultPath) {
     dialog.showSaveDialog({ defaultPath }).then(result => e.sender.send('save-path-selected', result))
   })
+
+  ipcMain.on('open-dev-tools', function() {
+    if (!isDevToolsOpened) {
+      win.webContents.openDevTools()
+    }
+  })
 }
 
 app.whenReady().then(async () => {
@@ -59,6 +73,16 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit()
   }
+})
+
+app.on('browser-window-focus', function() {
+  globalShortcut.register('CommandOrControl+R', () => null)
+  globalShortcut.register('F5', () => null)
+})
+
+app.on('browser-window-blur', function() {
+  globalShortcut.unregister('CommandOrControl+R')
+  globalShortcut.unregister('F5')
 })
 
 function setupStore() {
