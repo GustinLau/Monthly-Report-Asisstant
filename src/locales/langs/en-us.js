@@ -30,7 +30,7 @@ const local = {
         project_not_configured: 'Project not configured',
         project_select: 'project select',
         file_type_is_not_supported: 'File type is not supported',
-        only_support_csv_file: 'Only support csv file',
+        only_support_csv_file: 'Only support csv files',
         export_fail: 'export fail',
         export_success: 'export success',
         export_files: 'export files',

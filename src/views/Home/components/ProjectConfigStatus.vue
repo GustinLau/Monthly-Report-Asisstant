@@ -62,7 +62,7 @@ const form = reactive({ id: '' })
 
 function showProjectConfig() {
   if (props.step === 0) {
-    form.id = projectStore.currentProject
+    form.id = projectStore.currentProject?.toString()
     dialogVisible.value = true
   }
 }

@@ -33,7 +33,7 @@ const router = createRouter({
             {
               path: 'manual',
               name: 'Manual',
-              component: () => import('../views/Setting/Manual.vue')
+              component: () => import('../views/Setting/Manual/Manual.vue')
             }
           ]
         }
