@@ -1,9 +1,20 @@
 const { app, BrowserWindow, ipcMain, nativeTheme, dialog, globalShortcut } = require('electron')
 const { join } = require('path')
+const { autoUpdater, CancellationToken } = require('electron-updater')
+const electronBuilder = require('./electron-builder.json')
+const Store = require('electron-store')
+
+Object.defineProperty(app, 'isPackaged', {
+  get() {
+    return true;
+  }
+});
+
 
 let win = null
 let isDevToolsOpened = false
-const createWindow = () => {
+
+function createWindow() {
   win = new BrowserWindow({
     frame: false,
     width: 800,
@@ -57,17 +68,57 @@ function setupListener() {
       win.webContents.openDevTools()
     }
   })
+  // 更新相关
+  let cancelToken = new CancellationToken()
+  ipcMain.on('check-update', () =>{
+    console.log(123)
+    autoUpdater.checkForUpdates()
+  })
+  ipcMain.on('start-update', () => autoUpdater.downloadUpdate(cancelToken))
+  ipcMain.on('cancel-download', () => {
+    cancelToken.cancel()
+    cancelToken.dispose()
+    cancelToken = new CancellationToken()
+  })
+  ipcMain.on('update-now', () => autoUpdater.quitAndInstall())
 }
 
-app.whenReady().then(async () => {
-  setupListener()
-  setupStore()
-  setupTheme()
-  await createWindow() // 创建窗口
-  app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow()
+function setupUpdater() {
+  // 不自动下载
+  autoUpdater.autoDownload = false
+
+  autoUpdater.setFeedURL({
+    ...electronBuilder.publish
   })
-})
+  autoUpdater.on('checking-for-update', function() {
+    win.webContents.send('update-checking')
+  })
+  autoUpdater.on('error', function() {
+    win.webContents.send('update-error')
+  })
+  autoUpdater.on('update-not-available', function() {
+    win.webContents.send('update-not-available')
+  })
+  autoUpdater.on('update-available', function(info) {
+    win.webContents.send('update-available', info)
+  })
+  autoUpdater.on('download-progress', function(progressObj) {
+    win.webContents.send('update-download-progress', progressObj)
+  })
+  autoUpdater.on('update-downloaded', function() {
+    win.webContents.send('update-downloaded')
+  })
+}
+
+function setupStore() {
+  Store.initRenderer()
+}
+
+function setupTheme() {
+  const store = new Store()
+  const appConfig = store.get('appConfig') ?? {}
+  nativeTheme.themeSource = appConfig.theme ?? 'system'
+}
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
@@ -85,14 +136,15 @@ app.on('browser-window-blur', function() {
   globalShortcut.unregister('F5')
 })
 
-function setupStore() {
-  const Store = require('electron-store')
-  Store.initRenderer()
-}
 
-function setupTheme() {
-  const Store = require('electron-store')
-  const store = new Store()
-  const appConfig = store.get('appConfig') ?? {}
-  nativeTheme.themeSource = appConfig.theme ?? 'system'
-}
+app.whenReady().then(async () => {
+  setupListener()
+  setupUpdater()
+  setupStore()
+  setupTheme()
+  await createWindow() // 创建窗口
+  app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow()
+  })
+})
+

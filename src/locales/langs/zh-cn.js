@@ -64,7 +64,14 @@ const local = {
     compile_time: '编译时间',
     author: '关于作者',
     feedback: '意见反馈',
-    manual: '操作手册'
+    manual: '操作手册',
+    updater: {
+      update_confirm: '更新确认',
+      update_confirm_text: '更新已下载完成，是否安装？',
+      already_up_to_date: '已经是最新版本',
+      checking: '正在检查更新...',
+      update_error: '更新出错'
+    }
   },
   error: {
     incorrect_content: '文件内容不正确！'

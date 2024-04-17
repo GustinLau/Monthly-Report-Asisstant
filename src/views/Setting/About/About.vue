@@ -6,9 +6,9 @@
       <div>V{{ version }}</div>
     </div>
     <div class='sub-info'>
-      <div>{{ $t('about.compile_time') }}： 2024-07-08 12:15:21</div>
+      <div>{{ $t('about.compile_time') }}：{{ BUILD_TIME }}</div>
     </div>
-    <el-button class='update-check' size='large'>{{ $t('about.version_update') }}</el-button>
+    <Updater />
     <p class='op'>
       <el-link :underline='false' @click='aboutAuthor'>{{ $t('about.author') }}</el-link>
       <el-divider direction='vertical' />
@@ -22,15 +22,18 @@
 
 <script setup>
 import Logo from '@/assets/logo.svg'
-import packageInfo from '../../../package.json'
+import packageInfo from '../../../../package.json'
 import { computed } from 'vue'
 import { useElectron } from '@/hooks/electron/useElectron'
 import { $t } from '@/locales'
 import dayjs from 'dayjs'
 import { useRouter } from 'vue-router'
+import Updater from '@/views/Setting/About/components/Updater.vue'
+
+/* global __BUILD_TIME__ */
+const BUILD_TIME = __BUILD_TIME__
 
 const CopyrightYear = computed(() => dayjs().year() === 2024 ? '2024' : `2024 - ${dayjs().year()}`)
-
 const version = computed(() => packageInfo.version)
 const author = computed(() => packageInfo.author)
 
@@ -75,11 +78,6 @@ function openManual() {
   color: #aaa;
   margin: 6px 0;
   text-align: center;
-}
-
-.update-check {
-  margin-top: 24px;
-  width: 480px;
 }
 
 .op {

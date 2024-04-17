@@ -6,6 +6,7 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 import electron from 'vite-plugin-electron'
 import Icons from 'unplugin-icons/vite'
 import MarkdownPlugin from 'vite-plugin-markdown'
+import dayjs from 'dayjs'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -20,6 +21,9 @@ export default defineConfig({
         assetFileNames: 'assets/[ext]/[name]-[hash].[ext]'
       }
     }
+  },
+  define:{
+    __BUILD_TIME__: JSON.stringify(dayjs().format('YYYY-MM-DD HH:mm:ss'))
   },
   plugins: [
     vue(),

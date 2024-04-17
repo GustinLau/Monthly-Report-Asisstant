@@ -54,7 +54,6 @@ function handleThemeChange(val) {
   appStore.setTheme(val)
 }
 
-
 const titleMap = {
   Main: () => $t('route.system_setting'),
   ProjectConfig: () => $t('setting.project_config')
