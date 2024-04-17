@@ -40,17 +40,5 @@
         ]
       }
     ]
-  },
-  "mac": {
-    "icon": "dist/assets/icons",
-    "target": [
-      "dmg"
-    ]
-  },
-  "linux": {
-    "icon": "dist/assets/icons",
-    "target": [
-      "AppImage"
-    ]
   }
 }
