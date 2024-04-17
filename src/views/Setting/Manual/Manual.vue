@@ -15,6 +15,7 @@ import CarbonArrowRight from '~icons/carbon/arrow-right'
 import CarbonCheckmarkFilled from '~icons/carbon/checkmark-filled'
 import CarbonCloseFilled from '~icons/carbon/close-filled'
 import CarbonCloudUpload from '~icons/carbon/cloud-upload'
+import { ElUpload, ElAlert, ElButton } from 'element-plus'
 import { useAppStore } from '@/stores/app'
 import { computed } from 'vue'
 
@@ -22,11 +23,13 @@ const appStore = useAppStore()
 const language = computed(() => appStore.language)
 const ManualCN = ManualCNWith({
   DocumentImage, CarbonSettings, CarbonArrowRight, CarbonCheckmarkFilled,
-  CarbonCloseFilled, CarbonCloudUpload
+  CarbonCloseFilled, CarbonCloudUpload,
+  ElUpload, ElAlert, ElButton
 })
 const ManualEN = ManualENWith({
   DocumentImage, CarbonSettings, CarbonArrowRight, CarbonCheckmarkFilled,
-  CarbonCloseFilled, CarbonCloudUpload
+  CarbonCloseFilled, CarbonCloudUpload,
+  ElUpload, ElAlert, ElButton
 })
 </script>
 
