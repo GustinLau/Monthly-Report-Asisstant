@@ -4,15 +4,15 @@
 
 1. 查询需要生成文档的数据
 
-// 查询条件图片
+<document-image name="query" :common="true" max-width="100%"></document-image>
 
 2. 设置导出列
 
-// 导出列图片
+<document-image name="column" :common="true"></document-image>
 
 3. 导出数据
 
-// 导出数据按钮图片
+<document-image name="export-btn" :common="true"></document-image>
 
 ## 配置项目
 

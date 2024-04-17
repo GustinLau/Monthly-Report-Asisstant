@@ -57,6 +57,10 @@ const ManualEN = ManualENWith({
     margin: 4px 0;
   }
 
+  :deep(img) {
+    margin: 4px 0;
+  }
+
   :deep(.el-alert) {
     display: inline-block;
     width: auto;

@@ -4,15 +4,15 @@
 
 1. Query the data needed to generate the document.
 
-// Query condition image
+<document-image name="query" :common="true" max-width="100%"></document-image>
 
 2. Set export columns.
 
-// Export column image
+<document-image name="column" :common="true"></document-image>
 
 3. Export data.
 
-// Export data button image
+<document-image name="export-btn" :common="true"></document-image>
 
 ## Configuring Projects
 

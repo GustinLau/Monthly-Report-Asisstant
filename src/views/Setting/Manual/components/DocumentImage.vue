@@ -1,5 +1,5 @@
 <template>
-  <img style='width: 500px' alt='' :src='src' />
+  <img :style='{maxWidth}' alt='' :src='src' />
 </template>
 
 <script setup>
@@ -8,7 +8,15 @@ import { computed, ref, watchEffect } from 'vue'
 import { useColorMode } from '@vueuse/core'
 
 const props = defineProps({
-  name: String
+  name: String,
+  common: {
+    type: Boolean,
+    default: false
+  },
+  maxWidth: {
+    type: String,
+    default: '500px'
+  }
 })
 
 const appStore = useAppStore()
@@ -18,7 +26,7 @@ const { system } = useColorMode()
 const src = ref('')
 
 watchEffect(async () => {
-  const image = await import(`../images/${system.value}/${language.value}/${props.name}.png`)
+  const image = await import(`../images/${system.value}/${props.common ? 'common' : language.value}/${props.name}.png`)
   src.value = image.default
 })
 </script>
