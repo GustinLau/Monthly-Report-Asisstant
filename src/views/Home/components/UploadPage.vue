@@ -38,8 +38,12 @@ function handleFile(file) {
   if (file.name.endsWith('.csv')) {
     emit('analyzing', true)
     excel.readExcel(file.raw.path)
-      .then(analyses => emit('success', analyses))
+      .then(analyses => {
+        emit('analyzing', false)
+        emit('success', analyses)
+      })
       .catch(err => {
+        emit('analyzing', false)
         ElNotification({
           showClose: true,
           message: err,
@@ -47,7 +51,6 @@ function handleFile(file) {
           offset: 28
         })
       })
-      .finally(() => emit('analyzing', false))
   } else {
     ElNotification({
       showClose: true,

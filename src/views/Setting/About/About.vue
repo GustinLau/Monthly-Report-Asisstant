@@ -63,13 +63,13 @@ function openManual() {
 }
 
 .logo {
-  width: 148px;
+  width: 128px;
   margin-top: 64px;
 }
 
 .main-info {
   font-size: 24px;
-  margin: 16px 0 6px 0;
+  margin: 24px 0 6px 0;
   text-align: center;
 }
 

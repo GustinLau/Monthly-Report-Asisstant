@@ -5,9 +5,6 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 import electron from 'vite-plugin-electron'
 import Icons from 'unplugin-icons/vite'
 import MarkdownPlugin from 'vite-plugin-markdown'
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import dayjs from 'dayjs'
 
 // https://vitejs.dev/config/
@@ -35,12 +32,6 @@ export default defineConfig({
   plugins: [
     vue(),
     VueDevTools(),
-    AutoImport({
-      resolvers: [ElementPlusResolver()],
-    }),
-    Components({
-      resolvers: [ElementPlusResolver()],
-    }),
     Icons(),
     MarkdownPlugin({
       mode: ['vue']
