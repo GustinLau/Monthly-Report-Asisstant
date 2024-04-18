@@ -53,7 +53,8 @@ jobs:
       # 清理文件
       - name: Cleanup Artifacts
         run: |
-          npx rimraf "release/!(*.exe|*.blockmap|latest.yml)"
+          rimraf "release/!(*.exe|*.blockmap|latest.yml)"
+          rimraf "release/.icon-ico"
 
       # 构建阿里云OSS环境
       - name: Setup OSS Util
