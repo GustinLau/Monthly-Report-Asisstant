@@ -55,8 +55,9 @@ jobs:
 
       # 构建阿里云OSS环境
       - name: Setup OSS Util
-        uses: manyuanrong/setup-ossutil@v3.0
+        uses: yizhoumo/setup-ossutil@v2
         with:
+          ossutil-version: 'latest'
           endpoint: ${{ secrets.ALIYUN_OSS_ENDPOINT }}
           access-key-id: ${{ secrets.ALIYUN_OSS_ACCESS_KEY_ID }}
           access-key-secret: ${{ secrets.ALIYUN_OSS_ACCESS_KEY_SECRET }}
