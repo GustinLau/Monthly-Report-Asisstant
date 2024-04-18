@@ -53,6 +53,7 @@ jobs:
       # 清理文件
       - name: Cleanup Artifacts
         run: |
+          npm i -g rimraf
           rimraf "release/!(*.exe|*.blockmap|latest.yml)"
           rimraf "release/.icon-ico"
 
