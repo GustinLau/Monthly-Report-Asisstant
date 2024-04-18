@@ -2,7 +2,7 @@
   "name": "monthly-report-assistant",
   "cnName": "月报小助手",
   "description": "汇总、统计、生成结算文档",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "author": "Gustin Lau",
   "main": "main.js",
@@ -50,5 +50,6 @@
     "vue": "^3.4.22",
     "vue-i18n": "^9.12.1",
     "vue-router": "^4.3.0"
-  }
+  },
+  "license": "Apache-2.0"
 }
