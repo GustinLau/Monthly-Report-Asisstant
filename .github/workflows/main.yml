@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         node-version: [ 18.x ]
-        os: [ windows-2019 ]
+        os: [ windows-latest ]
 
     runs-on: ${{ matrix.os }}
 
@@ -52,6 +52,21 @@ jobs:
       # 运行构建脚本
       - name: Build
         run: npm run electron:windows
+
+      # 构建阿里云OSS环境
+      - name: Setup OSS Util
+        uses: manyuanrong/setup-ossutil@v3.0
+        with:
+          endpoint: ${{ secrets.ALIYUN_OSS_ENDPOINT }}
+          access-key-id: ${{ secrets.ALIYUN_OSS_ACCESS_KEY_ID }}
+          access-key-secret: ${{ secrets.ALIYUN_OSS_ACCESS_KEY_SECRET }}
+
+      # 上传到OSS
+      - name: Upload to OSS
+        run: |
+          ossutil cp -rf release/*.exe oss://${{ secrets.ALIYUN_OSS_BUCKET }}/${{ secrets.ALIYUN_OSS_PATH }}
+          ossutil cp -rf release/*.blockmap oss://${{ secrets.ALIYUN_OSS_BUCKET }}/${{ secrets.ALIYUN_OSS_PATH }}
+          ossutil cp -rf release/latest.yml oss://${{ secrets.ALIYUN_OSS_BUCKET }}/${{ secrets.ALIYUN_OSS_PATH }}
 
       # 清理文件
       - name: Cleanup Artifacts
