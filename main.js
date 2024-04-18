@@ -1,15 +1,7 @@
 const { app, BrowserWindow, ipcMain, nativeTheme, dialog, globalShortcut } = require('electron')
 const { join } = require('path')
 const { autoUpdater, CancellationToken } = require('electron-updater')
-const electronBuilder = require('./electron-builder.json')
 const Store = require('electron-store')
-
-Object.defineProperty(app, 'isPackaged', {
-  get() {
-    return true;
-  }
-});
-
 
 let win = null
 let isDevToolsOpened = false
@@ -70,26 +62,21 @@ function setupListener() {
   })
   // 更新相关
   let cancelToken = new CancellationToken()
-  ipcMain.on('check-update', () =>{
-    console.log(123)
-    autoUpdater.checkForUpdates()
-  })
-  ipcMain.on('start-update', () => autoUpdater.downloadUpdate(cancelToken))
+  ipcMain.on('check-update', () => autoUpdater.checkForUpdates())
+  ipcMain.on('start-download', () => autoUpdater.downloadUpdate(cancelToken))
   ipcMain.on('cancel-download', () => {
     cancelToken.cancel()
     cancelToken.dispose()
     cancelToken = new CancellationToken()
+    win.webContents.send('download-canceled')
   })
-  ipcMain.on('update-now', () => autoUpdater.quitAndInstall())
+  ipcMain.on('install-now', () => autoUpdater.quitAndInstall())
 }
 
 function setupUpdater() {
   // 不自动下载
   autoUpdater.autoDownload = false
 
-  autoUpdater.setFeedURL({
-    ...electronBuilder.publish
-  })
   autoUpdater.on('checking-for-update', function() {
     win.webContents.send('update-checking')
   })

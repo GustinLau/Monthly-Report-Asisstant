@@ -64,7 +64,21 @@ const local = {
         compile_time: 'Compile Time',
         author: 'Author',
         feedback: 'Feedback',
-        manual: 'Manual'
+        manual: 'Manual',
+        updater: {
+            update_confirm: 'Update Confirm',
+            update_confirm_text: 'Update has been downloaded. Would you like to install it?',
+            already_up_to_date: 'Already up to date',
+            checking: 'Checking for updates...',
+            update_error: 'Update Error',
+            discover_new_version: 'Discover New Version',
+            latest_version: 'Latest Version',
+            file_size: 'File Size',
+            update_time: 'Update Time',
+            update_now: 'Update Now',
+            next_time: 'Next Time',
+            downloading: 'Downloading'
+        }
     },
     error: {
         incorrect_content: 'The content of the file is incorrect!'

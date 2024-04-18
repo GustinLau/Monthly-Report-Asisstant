@@ -70,7 +70,14 @@ const local = {
       update_confirm_text: '更新已下载完成，是否安装？',
       already_up_to_date: '已经是最新版本',
       checking: '正在检查更新...',
-      update_error: '更新出错'
+      update_error: '更新出错',
+      discover_new_version: '发现新版本',
+      latest_version: '最新版本',
+      file_size: '文件大小',
+      update_time: '更新时间',
+      update_now: '立即更新',
+      next_time: '下次一定',
+      downloading: '下载中'
     }
   },
   error: {

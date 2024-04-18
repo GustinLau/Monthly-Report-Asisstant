@@ -26,6 +26,9 @@ import 'element-plus/es/components/tabs/style/css'
 import 'element-plus/es/components/tab-pane/style/css'
 import 'element-plus/es/components/upload/style/css'
 import 'element-plus/es/components/loading/style/css'
+import 'element-plus/es/components/descriptions/style/css'
+import 'element-plus/es/components/descriptions-item/style/css'
+import 'element-plus/es/components/progress/style/css'
 import 'element-plus/theme-chalk/dark/css-vars.css'
 
 import {
@@ -54,7 +57,10 @@ import {
   ElTabPane,
   ElTabs,
   ElUpload,
-  ElLoading
+  ElLoading,
+  ElDescriptions,
+  ElDescriptionsItem,
+  ElProgress
 } from 'element-plus'
 
 const components = [
@@ -83,7 +89,9 @@ const components = [
   ElTabPane,
   ElTabs,
   ElUpload,
-
+  ElDescriptions,
+  ElDescriptionsItem,
+  ElProgress
 ]
 
 const directives = {

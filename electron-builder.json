@@ -4,7 +4,7 @@
     "output": "release/"
   },
   "releaseInfo": {
-    "releaseNotes": "初始版本\n\n1. 支持自动填写月报\n2. 支持自动上传月报\n3. 支持自动发送邮件\n4. 支持自动发送钉钉消息\n5. 支持自动发送企业微信消息\n6. 支持自动发送飞书消息"
+    "releaseNotes": "初始版本"
   },
   "publish": {
     "provider": "generic",

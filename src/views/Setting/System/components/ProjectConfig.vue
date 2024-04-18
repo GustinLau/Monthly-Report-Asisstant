@@ -35,6 +35,7 @@
   <el-dialog
       v-model="dialogVisible"
       :title="dialogTitle"
+      :close-on-click-modal="false"
       width="380"
   >
     <el-form ref="formRef" :rules="projectFormRules" label-width="60" :model="projectForm">

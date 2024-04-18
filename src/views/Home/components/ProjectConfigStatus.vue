@@ -15,7 +15,7 @@
     </div>
   </el-alert>
 
-  <el-dialog v-model='dialogVisible' :title="startCase($t('home.project_select'))" width='380'>
+  <el-dialog v-model='dialogVisible' :close-on-click-modal="false" :title="startCase($t('home.project_select'))" width='380'>
     <el-form :model='form'>
       <el-form-item :label="startCase($t('common.project'))" prop='id' :label-width='80'>
         <el-select v-model='form.id' filterable>
