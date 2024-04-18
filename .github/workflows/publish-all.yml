@@ -54,9 +54,7 @@ jobs:
       # 清理文件
       - name: Cleanup Artifacts
         run: |
-          npm i -g rimraf
-          rimraf "release/!(*.exe|*.blockmap|latest.yml)"
-          rimraf "release/.icon-ico"
+          node cleanup.js .exe .blockmap latest.yml
 
       # 构建阿里云OSS环境
       - name: Setup OSS Util
@@ -75,8 +73,7 @@ jobs:
       # 清理文件
       - name: Cleanup Artifacts
         run: |
-          rimraf "release/!(*.exe)"
-          rimraf "release/.icon-ico" 
+          node cleanup.js .exe
 
       # 发布
       - name: release

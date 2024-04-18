@@ -53,9 +53,7 @@ jobs:
       # 清理文件
       - name: Cleanup Artifacts
         run: |
-          npm i -g rimraf
-          rimraf "release/!(*.exe)"
-          rimraf "release/.icon-ico" 
+          node cleanup.js .exe
 
       # 发布
       - name: release
