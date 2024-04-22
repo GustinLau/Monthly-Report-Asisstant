@@ -4,7 +4,7 @@
     "output": "release/"
   },
   "releaseInfo": {
-    "releaseNotes": "初始版本"
+    "releaseNotes": "修复一些Bug，优化用户体验"
   },
   "publish": {
     "provider": "generic",

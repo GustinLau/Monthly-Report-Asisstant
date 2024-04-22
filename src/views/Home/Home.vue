@@ -130,7 +130,8 @@ function exportData() {
         activeIndex.value = 3
       }
     })
-    .catch(() => {
+    .catch((e) => {
+      console.error(e)
       ElNotification({
         showClose: true,
         message: startCase($t('home.export_fail')),

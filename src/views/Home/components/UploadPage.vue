@@ -43,6 +43,7 @@ function handleFile(file) {
         emit('success', analyses)
       })
       .catch(err => {
+        console.error(err)
         emit('analyzing', false)
         ElNotification({
           showClose: true,

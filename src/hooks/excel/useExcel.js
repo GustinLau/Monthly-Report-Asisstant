@@ -2,6 +2,8 @@ import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
 import isBetween from 'dayjs/plugin/isBetween'
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter'
+import isSameOrBefore from 'dayjs/plugin/isSameOrBefore'
 import { groupBy, last, round } from 'lodash'
 import { $t } from '@/locales'
 
@@ -10,6 +12,8 @@ const JSZip = require('jszip')
 
 dayjs.extend(customParseFormat)
 dayjs.extend(isBetween)
+dayjs.extend(isSameOrAfter)
+dayjs.extend(isSameOrBefore)
 
 export function useExcel() {
 
