@@ -71,10 +71,10 @@ export function useExcel() {
           Object.keys(columnIndex).forEach(k => {
             const value = row[columnIndex[k]]
             if (k === 'startTime' || k === 'endTime') {
-              if (value.includes('上午') || value.includes('下午')) {
+              if (value.includes('上午') || value.includes('下午') ||  value.includes('AM') || value.includes('PM')) {
                 item[k] = dayjs(value, 'YYYY/M/D Ah:mm:ss', 'zh-cn').toDate()
               } else {
-                item[k] = dayjs(value, 'zh-cn').toDate()
+                item[k] = dayjs(value, undefined, 'zh-cn').toDate()
               }
             } else if (k === 'owner') {
               const data = row[columnIndex[k]]

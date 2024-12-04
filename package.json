@@ -2,7 +2,7 @@
   "name": "monthly-report-assistant",
   "cnName": "月报小助手",
   "description": "汇总、统计、生成结算文档",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "author": "Gustin Lau",
   "main": "main.js",
